@@ -1,0 +1,29 @@
+---
+title: 'Widget Practice'
+format: dashboard
+---
+
+```{python}
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import ipywidgets as widgets
+import matplotlib.pyplot as plt
+```
+
+## Row
+```{python}
+cars = sns.load_dataset('mpg')
+def bandwidth_widget(bw=1):
+   sns.kdeplot(cars.horsepower, lw=3, fill=True, bw_adjust=bw)
+   plt.xlim(-30, 300)
+   plt.ylim(0, 0.03)
+```
+
+```{python}
+widgets.interact(bandwidth_widget, bw=(0.1, 3))
+```
+
+
+
+
